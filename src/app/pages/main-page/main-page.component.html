@@ -19,7 +19,7 @@
                formControlName="name">
       </mat-form-field>
 
-      <button mat-stroked-button type="button" (click)="addTag()">Add tag</button>
+      <button mat-stroked-button type="button" [disabled]="!form.valid" (click)="addTag()">Add tag</button>
     </form>
   </div>
 
