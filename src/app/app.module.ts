@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import {BrowserModule, Title} from '@angular/platform-browser';
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,13 @@ import { HeaderComponent } from './main-layout/header/header.component';
 import { LeftMenuComponent } from './main-layout/left-menu/left-menu.component';
 import { FooterComponent } from './main-layout/footer/footer.component';
 import {MatIconModule} from "@angular/material/icon";
+import {CdkAccordionModule} from "@angular/cdk/accordion";
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import {MatChipsModule} from "@angular/material/chips";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import { MatButtonModule } from "@angular/material/button";
+import {MatInput, MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -20,16 +28,24 @@ import {MatIconModule} from "@angular/material/icon";
     MainLayoutComponent,
     HeaderComponent,
     LeftMenuComponent,
-    FooterComponent
+    FooterComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatMenuModule,
     MatSidenavModule,
     MatSlideToggleModule,
-    MatIconModule
+    MatIconModule,
+    CdkAccordionModule,
+    MatChipsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

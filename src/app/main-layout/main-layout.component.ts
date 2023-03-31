@@ -20,7 +20,6 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
       'bbbb',
       'cccc'
     ];
-    console.log('init', this);
   }
 
   ngOnDestroy() {

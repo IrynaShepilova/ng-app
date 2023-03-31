@@ -69,10 +69,11 @@
               "browserTarget": "ng-app:build:production"
             },
             "development": {
-              "browserTarget": "ng-app:build:development"
+              "browserTarget": "ng-app:build:development",
+//              "proxyConfig": "./proxy.conf.json"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

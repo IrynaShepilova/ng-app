@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class LeftMenuComponent {
 
+  public menuItems: String[] = ['Item 1', 'Item 2']
+
 }
