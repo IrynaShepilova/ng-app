@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class CommonService {
+export class TagsService {
 
   constructor(private http: HttpClient ) {}
 

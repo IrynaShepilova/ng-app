@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {CommonService} from "../../services/common.service";
+import {TagsService} from "../../services/tags.service";
 import {ITag} from "../../interfaces/tag";
 import { FormBuilder, FormGroup,  FormControl, Validators } from "@angular/forms";
 
@@ -14,7 +14,7 @@ export class MainPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private commonService: CommonService,
+    private tagsService: TagsService,
     private formBuilder: FormBuilder) {
 
     this.form = this.formBuilder.group({
@@ -30,7 +30,7 @@ export class MainPageComponent implements OnInit {
   }
 
   removeTag(tag: ITag){
-    this.commonService.removeTag(tag).subscribe(res => {
+    this.tagsService.removeTag(tag).subscribe(res => {
       this.getTags();
     }, (err)=>{
       console.error('Tag delete failed', err);
@@ -38,13 +38,13 @@ export class MainPageComponent implements OnInit {
   }
 
   getTags(){
-    this.commonService.getTagsList().subscribe( res => {
+    this.tagsService.getTagsList().subscribe( res => {
       this.tags = res;
     })
   }
 
   addTag(){
-    this.commonService.addTag(this.form.value['name']).subscribe( () => {
+    this.tagsService.addTag(this.form.value['name']).subscribe( () => {
       this.form.reset();
       this.getTags();
     })

@@ -21,6 +21,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { MatButtonModule } from "@angular/material/button";
 import {MatInput, MatInputModule} from "@angular/material/input";
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatInput, MatInputModule} from "@angular/material/input";
     HeaderComponent,
     LeftMenuComponent,
     FooterComponent,
-    MainPageComponent
+    MainPageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
