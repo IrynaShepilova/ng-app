@@ -6,11 +6,11 @@ import { FormBuilder, FormGroup,  FormControl, Validators } from "@angular/forms
 
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss']
+  selector: 'app-tags-page',
+  templateUrl: './tags-page.component.html',
+  styleUrls: ['./tags-page.component.scss']
 })
-export class MainPageComponent implements OnInit {
+export class TagsPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,

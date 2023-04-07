@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {BrowserModule, Title} from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,12 +15,12 @@ import { LeftMenuComponent } from './main-layout/left-menu/left-menu.component';
 import { FooterComponent } from './main-layout/footer/footer.component';
 import {MatIconModule} from "@angular/material/icon";
 import {CdkAccordionModule} from "@angular/cdk/accordion";
-import { MainPageComponent } from './pages/main-page/main-page.component';
+import { TagsPageComponent } from './pages/tags-page/tags-page.component';
 import {MatChipsModule} from "@angular/material/chips";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { MatButtonModule } from "@angular/material/button";
-import {MatInput, MatInputModule} from "@angular/material/input";
+import { MatInputModule} from "@angular/material/input";
 import { HomePageComponent } from './pages/home-page/home-page.component';
 
 @NgModule({
@@ -30,7 +30,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     HeaderComponent,
     LeftMenuComponent,
     FooterComponent,
-    MainPageComponent,
+    TagsPageComponent,
     HomePageComponent
   ],
   imports: [

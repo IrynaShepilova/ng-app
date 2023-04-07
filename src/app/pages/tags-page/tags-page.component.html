@@ -1,4 +1,4 @@
-<div class="main-page-container">
+<div class="tags-page-container">
   <div class="tags-container" *ngIf="tags">
     <mat-chip-listbox>
       <mat-chip class="tag" *ngFor="let tag of tags">
@@ -11,7 +11,7 @@
 
   </div>
 
-  <div class="main-page-form-container">
+  <div class="tags-page-form-container">
     <form [formGroup]="form">
       <mat-form-field appearance="fill">
         <mat-label>Add new tag:</mat-label>
