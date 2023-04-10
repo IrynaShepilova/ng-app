@@ -22,6 +22,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import { MatButtonModule } from "@angular/material/button";
 import { MatInputModule} from "@angular/material/input";
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
