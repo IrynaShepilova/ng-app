@@ -1,4 +1,4 @@
 export interface IUser {
-  name: String;
-  lastName?: String;
+    name: String;
+    lastName?: String;
 }

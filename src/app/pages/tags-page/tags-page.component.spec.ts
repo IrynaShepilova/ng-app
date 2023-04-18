@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TagsPageComponent } from './tags-page.component';
+import {TagsPageComponent} from './tags-page.component';
 
 describe('MainPageComponent', () => {
-  let component: TagsPageComponent;
-  let fixture: ComponentFixture<TagsPageComponent>;
+    let component: TagsPageComponent;
+    let fixture: ComponentFixture<TagsPageComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ TagsPageComponent ]
-    })
-    .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [TagsPageComponent]
+        })
+            .compileComponents();
 
-    fixture = TestBed.createComponent(TagsPageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(TagsPageComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

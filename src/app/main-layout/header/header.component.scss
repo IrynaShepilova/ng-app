@@ -1,32 +1,33 @@
 @import "@angular/material/prebuilt-themes/purple-green.css";
 
 .header {
-  background-color: darkblue;
-  opacity: 0.8;
-  height: 50px;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-
-  .logo-container {
-    background: url("../../assets/angular-material-logo.svg") no-repeat;
-    width: 50px;
+    background-color: darkblue;
+    opacity: 0.8;
     height: 50px;
-  }
-
-  .user-menu {
+    color: white;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
 
-    .user-menu-button {
-      padding-right: 20px;
-      button {
+    .logo-container {
+        background: url("../../assets/angular-material-logo.svg") no-repeat;
+        width: 50px;
+        height: 50px;
+    }
+
+    .user-menu {
         display: flex;
-      }
-    }
+        align-items: center;
 
-    mat-menu {
-      color: #333;
+        .user-menu-button {
+            padding-right: 20px;
+
+            button {
+                display: flex;
+            }
+        }
+
+        mat-menu {
+            color: #333;
+        }
     }
-  }
 }

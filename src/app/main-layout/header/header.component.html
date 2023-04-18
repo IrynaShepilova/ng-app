@@ -1,9 +1,9 @@
 <div class="header">
-  <div class="logo-container" (click)="navigateHome()">
+    <div class="logo-container" (click)="navigateHome()">
 
-  </div><!--   logo-container -->
+    </div><!--   logo-container -->
 
-  <div class="user-menu">
+    <div class="user-menu">
     <span class="user-menu-button">
       <button mat-button [matMenuTriggerFor]="menu">
         <mat-icon>account_circle</mat-icon>
@@ -11,21 +11,21 @@
       </button>
     </span>
 
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon color="primary">settings</mat-icon>
-        Change User settings
-      </button>
-      <button mat-menu-item>
-        <mat-icon color="primary">add_alert</mat-icon>
-        Alerts
-      </button>
-      <button mat-menu-item>
-        <mat-icon color="primary">logout</mat-icon>
-        Logout
-      </button>
-    </mat-menu>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <mat-icon color="primary">settings</mat-icon>
+                Change User settings
+            </button>
+            <button mat-menu-item>
+                <mat-icon color="primary">add_alert</mat-icon>
+                Alerts
+            </button>
+            <button mat-menu-item>
+                <mat-icon color="primary">logout</mat-icon>
+                Logout
+            </button>
+        </mat-menu>
 
-  </div> <!-- user-menu -->
+    </div> <!-- user-menu -->
 
 </div> <!-- header -->
