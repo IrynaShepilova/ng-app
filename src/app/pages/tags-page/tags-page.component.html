@@ -1,5 +1,5 @@
 <div class="tags-page-container">
-  <div class="tags-container" *ngIf="tags">
+  <div class="tags-container mb-6" *ngIf="tags">
     <mat-chip-listbox>
       <mat-chip class="tag" *ngFor="let tag of tags">
         {{ tag.name }}
@@ -12,10 +12,13 @@
   </div>
 
   <div class="tags-page-form-container">
-    <form [formGroup]="form">
+    <form [formGroup]="form" id="form">
       <mat-form-field appearance="fill">
         <mat-label>Add new tag:</mat-label>
-        <input id="name" type="text" matInput
+        <input id="name" type="text"
+               #nameInput
+               matInput
+               (keydown.enter)="addTag()"
                formControlName="name">
       </mat-form-field>
 

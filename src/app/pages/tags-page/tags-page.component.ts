@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {TagsService} from "../../services/tags.service";
 import {ITag} from "../../interfaces/tag";
@@ -25,35 +25,41 @@ export class TagsPageComponent implements OnInit {
 
   public tags: ITag[] = [];
   public form: FormGroup;
+  @ViewChild('nameInput') nameInput: ElementRef | undefined;
 
   ngOnInit(){
    this.getTags();
   }
 
+  getTags(){
+    this.tagsService.getTagsList().subscribe( res => {
+      this.tags = res.sort((a, b) => a.id - b.id);
+    })
+  }
+
   removeTag(tag: ITag){
     this.tagsService.removeTag(tag).subscribe(res => {
-      this.toastr.success('Tag removed' )
+      this.toastr.success('Tag removed' , undefined, {closeButton: true, timeOut: 1000})
       this.getTags();
     }, (err)=>{
       this.toastr.error(`Could not delete tag: ${err.message}`)
     })
   }
 
-  getTags(){
-    this.tagsService.getTagsList().subscribe( res => {
-      this.tags = res;
-    })
-  }
-
   addTag(){
     this.tagsService.addTag(this.form.value['name']).subscribe( () => {
-      this.toastr.success('Tag was successfully added')
-      this.form.reset();
+      this.toastr.success('Tag was successfully added', undefined, {closeButton: true, timeOut: 1000});
+
+      this.resetForm();
       this.getTags();
     }, err=> {
       this.toastr.error(`Tag was not added: ${err.message}`)
     })
   }
 
-
+  resetForm(){
+    this.form.reset();
+    this.form.controls['name'].setErrors(null)
+    this.nameInput && this.nameInput.nativeElement.blur();
+  }
 }
