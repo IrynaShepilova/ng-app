@@ -71,7 +71,6 @@
                         },
                         "development": {
                             "browserTarget": "ng-app:build:development"
-                            //              "proxyConfig": "./proxy.conf.json"
                         }
                     },
                     "defaultConfiguration": "development"
