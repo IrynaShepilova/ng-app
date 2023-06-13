@@ -17,12 +17,14 @@ import {MatIconModule} from "@angular/material/icon";
 import {CdkAccordionModule} from "@angular/cdk/accordion";
 import {TagsPageComponent} from './pages/tags-page/tags-page.component';
 import {MatChipsModule} from "@angular/material/chips";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {HomePageComponent} from './pages/home-page/home-page.component';
 import {ToastrModule} from "ngx-toastr";
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { TicTacToeComponent } from './pages/tictactoe/tic-tac-toe.component';
 
 @NgModule({
     declarations: [
@@ -32,7 +34,9 @@ import {ToastrModule} from "ngx-toastr";
         LeftMenuComponent,
         FooterComponent,
         TagsPageComponent,
-        HomePageComponent
+        HomePageComponent,
+        LoginPageComponent,
+        TicTacToeComponent
     ],
     imports: [
         BrowserModule,
@@ -49,7 +53,8 @@ import {ToastrModule} from "ngx-toastr";
         MatFormFieldModule,
         MatButtonModule,
         MatInputModule,
-        ToastrModule.forRoot()
+        ToastrModule.forRoot(),
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

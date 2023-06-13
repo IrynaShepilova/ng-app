@@ -1,0 +1,23 @@
+.row {
+    display: flex;
+    .square {
+        border: 1px solid grey;
+    }
+}
+
+button.reset {
+    min-width: 60px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding: 3px 8px;
+    margin: 10px 0;
+}
+
+.red {
+    color: red;
+}
+
+.square {
+    width: 40px;
+    height: 40px;
+}
