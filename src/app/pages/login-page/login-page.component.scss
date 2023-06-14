@@ -9,6 +9,10 @@
     align-items: center;
     flex-direction: column;
 
+    .login-form-container {
+        width: 80%;
+    }
+
     .title {
         margin: 10px 0;
         font-size: 1.6em;

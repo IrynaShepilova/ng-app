@@ -9,21 +9,31 @@
             <a  (click)="toggleIsRegister()">Register</a>
         </div>
         <div class="login-helper" @trigger *ngIf="isRegister">
+            <span >Have an account?</span>
             <a  (click)="toggleIsRegister()">Login</a>
         </div>
 
         <form flex flex-col
             #form="ngForm"
-            id="loginForm">
+            id="loginForm"
+            [formGroup]="loginForm"
+            (ngSubmit)="action()">
+
             <mat-form-field appearance="fill">
                 <mat-label>Enter email</mat-label>
-                 <input id="email" type="email" matInput>
+                 <input id="email" type="email" matInput formControlName="email">
+                <mat-error *ngIf="loginForm.controls.email.errors?.['email']">This should be a valid email</mat-error>
             </mat-form-field>
+
             <mat-form-field appearance="fill">
                 <mat-label>Enter password</mat-label>
-                <input id="password" type="password" matInput>
+                <input id="password" [type]="!showPassword ? 'password' : 'text' " matInput formControlName="password" min="6">
+                <button matSuffix mat-icon-button color="primary" (click)="togglePassword($event);"><mat-icon [ngClass]=" {'opacity-20' : showPassword}">remove_red_eye</mat-icon></button>
+                <mat-error *ngIf="loginForm.controls.password.errors?.['required']" >This field is required </mat-error>
+                <mat-error *ngIf="loginForm.controls.password.errors?.['minLength'] && loginForm.touched && !loginForm.pristine " >This field must be at least 6 characters long. </mat-error>
             </mat-form-field>
-            <button mat-raised-button color="primary" type="button" [disabled]="!form.valid" (click)="action()">{{ isRegister ? 'Register' : 'Login' }}</button>
+
+            <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid" >{{ isRegister ? 'Register' : 'Login' }}</button>
         </form>
 
     </div>
