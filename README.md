@@ -1,3 +1,12 @@
+# Description
+
+This is an angular playground project. 
+Currenly it has these views:
+- login/register (route '/login', no left menu item. successful login redirects to home page, successful register should redirect to User setting page - TBD)
+- tags (fetches and displays tags from DB (see nestjs-server for backend), tags adding and deletion, as well as toast messages for success and failure of these operations)
+- tic-tac-toe game
+- home page (empty)
+
 # NgApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
