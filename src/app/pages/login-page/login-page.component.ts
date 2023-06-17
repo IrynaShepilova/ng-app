@@ -97,4 +97,8 @@ export class LoginPageComponent {
             this.loginForm.controls.password.setErrors(null);
         }, 2000);
     }
+
+    skip(){
+        this.router.navigate(['']);
+    }
 }

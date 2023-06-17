@@ -7,6 +7,7 @@
         <div class="login-helper" @trigger *ngIf="!isRegister">
             <span >Don't have an account?</span>
             <a  (click)="toggleIsRegister()">Register</a>
+            <span class="ml-1.5">Or <a (click)="skip()">Skip</a> </span>
         </div>
         <div class="login-helper" @trigger *ngIf="isRegister">
             <span >Have an account?</span>
