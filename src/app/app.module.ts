@@ -25,6 +25,7 @@ import {HomePageComponent} from './pages/home-page/home-page.component';
 import {ToastrModule} from "ngx-toastr";
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { TicTacToeComponent } from './pages/tictactoe/tic-tac-toe.component';
+import { CatchmeComponent } from './pages/catchme/catchme.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import { TicTacToeComponent } from './pages/tictactoe/tic-tac-toe.component';
         TagsPageComponent,
         HomePageComponent,
         LoginPageComponent,
-        TicTacToeComponent
+        TicTacToeComponent,
+        CatchmeComponent
     ],
     imports: [
         BrowserModule,

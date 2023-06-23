@@ -1,0 +1,38 @@
+.row {
+    display: flex;
+    .square {
+        border: 1px solid white;
+    }
+}
+
+.square {
+    width: 40px;
+    height: 40px;
+}
+
+button.start {
+    min-width: 60px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding: 3px 8px;
+    margin: 10px 30px 10px;
+}
+
+.blue {
+    background-color: cornflowerblue;
+    color: white;
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+

@@ -1,0 +1,23 @@
+<div class="header-container flex row">
+    <form [formGroup]="form" id="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Set timeout (in ms):</mat-label>
+            <input type="text" formControlName="timeoutValue" (keyup)="filterInput()" matInput>
+        </mat-form-field>
+        <button class="start" (click)="start()">Start</button>
+    </form>
+
+</div>
+
+<section>
+    <div class="score-container flex justify-center m-2">
+        <span class="text-xl">AI: {{aiCellsWon}} | {{humanCellsWon}} :Human</span>
+    </div>
+    <div class="row" *ngFor="let row of cells; let i = index">
+        <button *ngFor="let col of row; let j = index"
+                class="square blue"
+                [ngClass]="{ 'yellow' : (cells[i][j]  === 'flash' ), 'green' : (cells[i][j]  === 'human' ) ,  'red' : (cells[i][j]  === 'ai' ) }"
+                (click)="fieldButtonClick(i,j)"
+        ></button>
+    </div>
+</section>
