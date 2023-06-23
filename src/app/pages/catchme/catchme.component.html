@@ -1,23 +1,38 @@
-<div class="header-container flex row">
-    <form [formGroup]="form" id="form">
-        <mat-form-field appearance="fill">
-            <mat-label>Set timeout (in ms):</mat-label>
-            <input type="text" formControlName="timeoutValue" (keyup)="filterInput()" matInput>
-        </mat-form-field>
-        <button class="start" (click)="start()">Start</button>
-    </form>
+<div class="catchme-container flex flex-col flex-wrap h-full">
+
+    <div class="header-container flex row">
+        <form [formGroup]="form" id="form">
+            <mat-form-field appearance="fill">
+                <mat-label>Set timeout (in ms):</mat-label>
+                <input type="text" formControlName="timeoutValue" (keyup)="filterInput()" matInput>
+            </mat-form-field>
+            <button class="start" (click)="start()">Start</button>
+        </form>
+
+    </div>
+
+    <section>
+        <div class="score-container flex justify-center m-2">
+            <span class="text-xl">AI: {{aiCellsWon}} | {{humanCellsWon}} :Human</span>
+        </div>
+        <div class="row" *ngFor="let row of cells; let i = index">
+            <button *ngFor="let col of row; let j = index"
+                    class="square blue"
+                    [ngClass]="{ 'yellow' : (cells[i][j]  === 'flash' ), 'green' : (cells[i][j]  === 'human' ) ,  'red' : (cells[i][j]  === 'ai' ) }"
+                    (click)="fieldButtonClick(i,j)"
+            ></button>
+        </div>
+    </section>
+
+    <section class="rules absolute right-10">
+        <span class="text-lg font-bold">How to play:</span>
+        <ul class="list-disc">
+            <li>Set the timer in the input field</li>
+            <li>Press "Start" and click the square that became yellow</li>
+            <li>Make it to click the yellow square before the time is up</li>
+            <li>If you succeed, the cell is yours, if not, it's computer's</li>
+            <li>Get 10 cells before the computer does to win the game!</li>
+        </ul>
+    </section>
 
 </div>
-
-<section>
-    <div class="score-container flex justify-center m-2">
-        <span class="text-xl">AI: {{aiCellsWon}} | {{humanCellsWon}} :Human</span>
-    </div>
-    <div class="row" *ngFor="let row of cells; let i = index">
-        <button *ngFor="let col of row; let j = index"
-                class="square blue"
-                [ngClass]="{ 'yellow' : (cells[i][j]  === 'flash' ), 'green' : (cells[i][j]  === 'human' ) ,  'red' : (cells[i][j]  === 'ai' ) }"
-                (click)="fieldButtonClick(i,j)"
-        ></button>
-    </div>
-</section>
