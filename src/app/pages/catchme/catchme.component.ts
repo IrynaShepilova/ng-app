@@ -8,6 +8,12 @@ interface Cell {
     j?: number
 }
 
+enum CellsText {
+    flash = 'flash',
+    ai = 'ai',
+    human = 'human'
+}
+
 @Component({
   selector: 'app-catchme',
   templateUrl: './catchme.component.html',
@@ -32,6 +38,7 @@ export class CatchmeComponent {
     public flashedCell: Cell = {};
     private clickedCellMatch$ = new Subject();
     private timesToWin: number = 10;
+    protected readonly CellsText = CellsText;
 
     private getEmptyCells(): string[][]{
         return  [
@@ -67,7 +74,7 @@ export class CatchmeComponent {
         if (this.cells[i][j] !== '') {
             this.flashRandomCell();
         } else {
-            this.cells[i][j] = 'flash';
+            this.cells[i][j] = CellsText.flash;
             this.flashedCell = {i, j};
             this.startRace();
         }
@@ -80,7 +87,7 @@ export class CatchmeComponent {
             .pipe(
                 takeUntil( this.clickedCellMatch$ ),
                 finalize(() => {
-                    if (this.clickedCell.i=== this.flashedCell.i && this.clickedCell.j===this.flashedCell.j ) {
+                    if ( this.clickedCellIsFlashedCell()  ) {
                         this.humanCellsWon++;
                         this.markFlashedCellHuman();
                     } else  {
@@ -90,11 +97,10 @@ export class CatchmeComponent {
                     if (Math.max(this.humanCellsWon,  this.aiCellsWon) < this.timesToWin ) {
                         this.flashRandomCell();
                     } else {
-                        console.log(`winner is ${this.humanCellsWon === this.timesToWin ? 'human': 'ai' }` );
                         if (this.humanCellsWon === this.timesToWin) {
-                            this.toastr.success('Player wins!', 'Game over', {closeButton: true, timeOut: 3000})
+                            this.toastr.success('Human wins!', 'Game over', {closeButton: true, timeOut: 3000})
                         } else {
-                            this.toastr.error('Computer wins!', 'Game over', {closeButton: true, timeOut: 3000});
+                            this.toastr.error('AI wins!', 'Game over', {closeButton: true, timeOut: 3000});
                         }
                     }
                 })
@@ -104,9 +110,13 @@ export class CatchmeComponent {
 
     fieldButtonClick( i: number, j: number ) {
         this.clickedCell = { i, j };
-        if ( this.clickedCell.i === this.flashedCell.i && this.clickedCell.j === this.flashedCell.j ) {
+        if ( this.clickedCellIsFlashedCell() ) {
             this.clickedCellMatch$.next(true);
         }
+    }
+
+    clickedCellIsFlashedCell(): boolean{
+        return this.clickedCell.i === this.flashedCell.i && this.clickedCell.j === this.flashedCell.j;
     }
 
     filterInput(){
@@ -118,11 +128,12 @@ export class CatchmeComponent {
 
     private markFlashedCellHuman() {
         // @ts-ignore
-        this.cells[this.flashedCell.i][this.flashedCell.j] = 'human';
+        this.cells[this.flashedCell.i][this.flashedCell.j] = CellsText.human;
     }
 
     private markFlashedCellAI() {
         // @ts-ignore
-        this.cells[this.flashedCell.i][this.flashedCell.j] = 'ai';
+        this.cells[this.flashedCell.i][this.flashedCell.j] = CellsText.ai;
     }
+
 }

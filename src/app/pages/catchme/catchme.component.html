@@ -13,12 +13,12 @@
 
     <section>
         <div class="score-container flex justify-center m-2">
-            <span class="text-xl">AI: {{aiCellsWon}} | {{humanCellsWon}} :Human</span>
+            <span class="text-xl"> <span class="uppercase">{{CellsText.ai}}</span>: {{aiCellsWon}} | {{humanCellsWon}} :<span class="capitalize">{{CellsText.human}}</span></span>
         </div>
         <div class="row" *ngFor="let row of cells; let i = index">
             <button *ngFor="let col of row; let j = index"
                     class="square blue"
-                    [ngClass]="{ 'yellow' : (cells[i][j]  === 'flash' ), 'green' : (cells[i][j]  === 'human' ) ,  'red' : (cells[i][j]  === 'ai' ) }"
+                    [ngClass]="{ 'yellow' : (cells[i][j]  === CellsText.flash ), 'green' : (cells[i][j]  === CellsText.human) ,  'red' : (cells[i][j]  === CellsText.ai ) }"
                     (click)="fieldButtonClick(i,j)"
             ></button>
         </div>
