@@ -18,7 +18,8 @@
             #form="ngForm"
             id="loginForm"
             [formGroup]="loginForm"
-            (ngSubmit)="action()">
+            (keydown.enter)="checkEnterAndSubmitForm($event)"
+            (ngSubmit)="submitForm()">
 
             <mat-form-field appearance="fill">
                 <mat-label>Enter email</mat-label>

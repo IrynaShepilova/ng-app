@@ -37,7 +37,7 @@ export class LoginPageComponent {
         password: new FormControl('', [Validators.required ])
     })
 
-    action(){
+    submitForm(){
         const email: string = this.loginForm.controls.email.value || '';
         const password: string = this.loginForm.controls.password.value || '';
         const user: IUserLogin = { email, password };
@@ -101,4 +101,13 @@ export class LoginPageComponent {
     skip(){
         this.router.navigate(['']);
     }
+
+    checkEnterAndSubmitForm($event: Event){
+        if (this.loginForm.valid ) {
+            this.submitForm();
+        }
+        $event.preventDefault();
+        $event.stopPropagation();
+    }
+
 }
