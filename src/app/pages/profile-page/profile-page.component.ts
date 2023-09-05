@@ -49,7 +49,6 @@ export class ProfilePageComponent implements OnInit {
         const dateOfBirth: Date = this.profileForm.controls.dateOfBirth.value!;
         const profileData: IUserProfile = { firstName, lastName, dateOfBirth };
 
-        console.log('profileData', profileData);
         this.profileService.update(profileData).subscribe(resp => {
             this.toastr.success('User profile updated', '', {timeOut: 1000});
             this.getUserData();
