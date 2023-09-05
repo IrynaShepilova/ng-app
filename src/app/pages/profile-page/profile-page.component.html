@@ -1,0 +1,8 @@
+<h3>Personal info</h3>
+
+<ng-container *ngIf="profile">
+    <div>First name: {{profile.firstName}}</div>
+    <div>Last name: {{profile.lastName}}</div>
+    <div>Date of birth: {{profile.dateOfBirth | date}}</div>
+</ng-container>
+

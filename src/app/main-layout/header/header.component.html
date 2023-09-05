@@ -7,12 +7,12 @@
     <span class="user-menu-button">
       <button mat-button [matMenuTriggerFor]="menu">
         <mat-icon>account_circle</mat-icon>
-        <span>{{user.name}}</span>
+        <span>{{user.firstName}}</span>
       </button>
     </span>
 
         <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+            <button mat-menu-item (click)="goToUserProfile()">
                 <mat-icon color="primary">settings</mat-icon>
                 Change User settings
             </button>
@@ -20,8 +20,8 @@
                 <mat-icon color="primary">add_alert</mat-icon>
                 Alerts
             </button>
-            <button mat-menu-item>
-                <mat-icon color="primary">logout</mat-icon>
+            <button mat-menu-item (click)="logoutUser()">
+                <mat-icon color="primary" >logout</mat-icon>
                 Logout
             </button>
         </mat-menu>

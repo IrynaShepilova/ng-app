@@ -11,15 +11,9 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     public str: String = 'my string'
     private arr: String[] = [];
 
-    constructor(private router: Router) {
-    }
+    constructor(private router: Router) {}
 
     ngOnInit() {
-        this.arr = [
-            'aaaa',
-            'bbbb',
-            'cccc'
-        ];
     }
 
     ngOnDestroy() {

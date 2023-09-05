@@ -9,22 +9,34 @@ import { IUserLogin } from "../interfaces/user";
     providedIn: 'root'
 })
 
-export class LoginService {
+export class AuthService {
 
     constructor( private  http: HttpClient ) { }
 
     private url: string = API_HOST + ':' + API_PORT + '/user';
+    private token!: string;
 
     public loginUser( user: IUserLogin ):Observable<any> {
-        return this.http.post(this.url + '/login', user);
+        const options = { headers: { skip: "true" } }
+        return this.http.post(this.url + '/login', user, options);
     }
 
     public createUser(user: IUserLogin): Observable<any>{
-        return this.http.post(this.url + '/create', user);
+        const options = { headers: {skip:"true" } }
+        return this.http.post(this.url + '/create', user, options);
     }
 
     public saveToken(token: string){
-        console.log('token', token);
+        localStorage.setItem('token', token);
+        this.token = token;
+    }
+
+    public getToken(){
+        return this.token = localStorage.getItem('token')! ;
+    }
+
+    public clearToken() {
+        localStorage.removeItem('token');
     }
 
 }

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -26,6 +26,8 @@ import {ToastrModule} from "ngx-toastr";
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { TicTacToeComponent } from './pages/tictactoe/tic-tac-toe.component';
 import { CatchmeComponent } from './pages/catchme/catchme.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import {TokenInterceptor} from "./token.interceptor";
 
 @NgModule({
     declarations: [
@@ -38,7 +40,8 @@ import { CatchmeComponent } from './pages/catchme/catchme.component';
         HomePageComponent,
         LoginPageComponent,
         TicTacToeComponent,
-        CatchmeComponent
+        CatchmeComponent,
+        ProfilePageComponent
     ],
     imports: [
         BrowserModule,
@@ -58,7 +61,11 @@ import { CatchmeComponent } from './pages/catchme/catchme.component';
         ToastrModule.forRoot(),
         FormsModule
     ],
-    providers: [],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
+        }
+    ],
     bootstrap: [AppComponent]
 })
 

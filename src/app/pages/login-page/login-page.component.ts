@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from "@angular/forms";
 import {animate, style, transition, trigger} from "@angular/animations";
-import { LoginService } from "../../services/login.service";
+import { AuthService } from "../../services/auth.service";
 import {IUserLogin} from "../../interfaces/user";
 import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
@@ -21,10 +21,10 @@ import { Router } from "@angular/router";
             ])
     ])]
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnInit {
 
     constructor(
-        private loginService: LoginService,
+        private authService: AuthService,
         private toastr: ToastrService,
         private router: Router) {
     }
@@ -36,6 +36,10 @@ export class LoginPageComponent {
         email: new FormControl('', [Validators.email, Validators.required]),
         password: new FormControl('', [Validators.required ])
     })
+
+    ngOnInit() {
+        this.checkTokenAndRedirectHome();
+    }
 
     submitForm(){
         const email: string = this.loginForm.controls.email.value || '';
@@ -65,9 +69,9 @@ export class LoginPageComponent {
     }
 
     loginUser(user: IUserLogin) {
-        return this.loginService.loginUser(user).subscribe( (res)=>{
-            this.loginService.saveToken(res.user.token);
-            this.toastr.success('Login successful');
+        return this.authService.loginUser(user).subscribe( (res)=>{
+            this.authService.saveToken(res.user.token);
+            this.toastr.success('Login successful', '', { timeOut: 2000 });
             this.router.navigate(['']);
         },
             (err) => {
@@ -77,11 +81,10 @@ export class LoginPageComponent {
     }
 
     createUser(user: IUserLogin){
-        return this.loginService.createUser(user).subscribe( (res) => {
-            this.loginService.saveToken(res.user.token);
-            this.toastr.success('User created successfully');
-            console.log('res', res);
-            // this.router.navigate(['userSettings']);
+        return this.authService.createUser(user).subscribe( (res) => {
+            this.authService.saveToken(res.user.token);
+            this.toastr.success('User created successfully', '', { timeOut: 2000 });
+            this.router.navigate(['profile']);
         },
             (err) => {
                 this.toastr.error(`User creation failed: ${err.error.message}`);
@@ -108,6 +111,12 @@ export class LoginPageComponent {
         }
         $event.preventDefault();
         $event.stopPropagation();
+    }
+
+    checkTokenAndRedirectHome(){
+        if (this.authService.getToken() ) {
+            this.router.navigate(['home']);
+        }
     }
 
 }

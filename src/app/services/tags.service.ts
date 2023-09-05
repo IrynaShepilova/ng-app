@@ -16,7 +16,8 @@ export class TagsService {
     private url: string = API_HOST + ':' + API_PORT + '/tags';
 
     public getTagsList(): Observable<ITag[]> {
-        return this.http.get<ITag[]>(this.url);
+        const options = { headers: { skip: "true" } };
+        return this.http.get<ITag[]>(this.url, options);
     };
 
     public removeTag(tag: ITag) {
