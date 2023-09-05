@@ -1,8 +1,32 @@
-<h3>Personal info</h3>
+<h5 class="text-xl font-bold mb-4">Personal info</h5>
+<p class="text-sm mb-6">You can change your personal data here</p>
 
 <ng-container *ngIf="profile">
-    <div>First name: {{profile.firstName}}</div>
-    <div>Last name: {{profile.lastName}}</div>
-    <div>Date of birth: {{profile.dateOfBirth | date}}</div>
+
+    <form
+          id="profileForm"
+          class="flex flex-col"
+          [formGroup]="profileForm"
+          (ngSubmit)="submitForm()">
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Enter first name</mat-label>
+            <input id="firstName" type="text" matInput formControlName="firstName" >
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter last name</mat-label>
+            <input id="lastName" type="text" matInput formControlName="lastName">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter date of birth</mat-label>
+            <input matInput [matDatepicker]="dateOfBirth" [max]="maxDate" formControlName="dateOfBirth">
+            <mat-datepicker-toggle matIconSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+            <mat-datepicker #dateOfBirth></mat-datepicker>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid" >Save</button>
+    </form>
 </ng-container>
 

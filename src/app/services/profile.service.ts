@@ -18,4 +18,8 @@ export class ProfileService {
     public getCurrentUserProfile(): Observable<IUserProfile>{
         return this.http.get(this.url + '/currentUser' );
     }
+
+    public update(profileData: IUserProfile): Observable<any> {
+        return this.http.patch(this.url + '/update', profileData)
+    }
 }

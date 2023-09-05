@@ -28,6 +28,8 @@ import { TicTacToeComponent } from './pages/tictactoe/tic-tac-toe.component';
 import { CatchmeComponent } from './pages/catchme/catchme.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import {TokenInterceptor} from "./token.interceptor";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
     declarations: [
@@ -58,6 +60,8 @@ import {TokenInterceptor} from "./token.interceptor";
         MatFormFieldModule,
         MatButtonModule,
         MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
         ToastrModule.forRoot(),
         FormsModule
     ],
