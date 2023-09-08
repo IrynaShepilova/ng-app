@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, isDevMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 
@@ -30,6 +30,11 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import {TokenInterceptor} from "./token.interceptor";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducer } from "./store/reducers";
+import {StoreEffects} from "./store/effects";
 
 @NgModule({
     declarations: [
@@ -63,7 +68,10 @@ import {MatNativeDateModule} from "@angular/material/core";
         MatDatepickerModule,
         MatNativeDateModule,
         ToastrModule.forRoot(),
-        FormsModule
+        FormsModule,
+        StoreModule.forRoot({  reducer }, {}),
+        EffectsModule.forRoot(StoreEffects),
+        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
     ],
     providers: [
         {

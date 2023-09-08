@@ -3,12 +3,18 @@
 
     </div><!--   logo-container -->
 
+    <ng-container *ngIf="(profile$ | async) as profile">
+        <div class="store" >{{profile| json }}</div>
+    </ng-container>
     <div class="user-menu">
     <span class="user-menu-button">
-      <button mat-button [matMenuTriggerFor]="menu">
+        <button mat-button [matMenuTriggerFor]="menu">
         <mat-icon>account_circle</mat-icon>
-        <span>{{user.firstName}}</span>
-      </button>
+            <span *ngIf="(profile$ | async) as profile ; else noProfile">{{ profile.firstName}} {{profile.lastName}}</span>
+            <ng-template #noProfile>
+                <span >{{anon}}</span>
+            </ng-template>
+        </button>
     </span>
 
         <mat-menu #menu="matMenu">

@@ -1,26 +1,34 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { IUserProfile } from "../../interfaces/profile";
-import {ActivatedRoute, Router} from "@angular/router";
+import { Router} from "@angular/router";
 import { AuthService } from "../../services/auth.service";
 import { ToastrService } from "ngx-toastr";
+import {select, Store} from "@ngrx/store";
+import * as actions from "../../store/actions";
+import {map, Observable} from "rxjs";
+import { userProfileSelector } from "../../store/selectors";
+import {IUserDataState} from "../../interfaces/userDataState";
+
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
-    public user: IUserProfile = {
-        firstName: "Anonymous",
-        lastName: ""
-    }
+export class HeaderComponent implements OnInit {
+    public anon : string =  "Anonymous";
+    profile$: Observable<IUserProfile> = this.store.select(userProfileSelector );
 
     constructor(
-        private routerState: ActivatedRoute,
         private router: Router,
         private authService: AuthService,
         private toastr: ToastrService,
+        private store: Store<IUserDataState>,
     ) {
+    }
+
+    ngOnInit() {
+       this.store.dispatch(actions.getCurrentUserProfile());
     }
 
     navigateHome() {
