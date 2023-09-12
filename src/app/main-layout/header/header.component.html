@@ -2,36 +2,36 @@
     <div class="logo-container" (click)="navigateHome()">
 
     </div><!--   logo-container -->
+    <ng-container *ngIf="(profile$ | async) as profile ; else noProfile">
+        <div class="user-menu">
+            <span class="user-menu-button">
+                <button mat-button [matMenuTriggerFor]="menu">
+                <mat-icon>account_circle</mat-icon>
+                    <span>{{ profile.firstName}} {{profile.lastName}}</span>
 
-    <ng-container *ngIf="(profile$ | async) as profile">
-        <div class="store" >{{profile| json }}</div>
+                </button>
+            </span>
+
+
+            <mat-menu  #menu="matMenu">
+                <button mat-menu-item (click)="goToUserProfile()">
+                    <mat-icon color="primary">settings</mat-icon>
+                    Change User settings
+                </button>
+                <button mat-menu-item>
+                    <mat-icon color="primary">add_alert</mat-icon>
+                    Alerts
+                </button>
+                <button mat-menu-item (click)="logoutUser()">
+                    <mat-icon color="primary" >logout</mat-icon>
+                    Logout
+                </button>
+            </mat-menu>
+
+        </div> <!-- user-menu -->
     </ng-container>
-    <div class="user-menu">
-    <span class="user-menu-button">
-        <button mat-button [matMenuTriggerFor]="menu">
-        <mat-icon>account_circle</mat-icon>
-            <span *ngIf="(profile$ | async) as profile ; else noProfile">{{ profile.firstName}} {{profile.lastName}}</span>
-            <ng-template #noProfile>
-                <span >{{anon}}</span>
-            </ng-template>
-        </button>
-    </span>
-
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="goToUserProfile()">
-                <mat-icon color="primary">settings</mat-icon>
-                Change User settings
-            </button>
-            <button mat-menu-item>
-                <mat-icon color="primary">add_alert</mat-icon>
-                Alerts
-            </button>
-            <button mat-menu-item (click)="logoutUser()">
-                <mat-icon color="primary" >logout</mat-icon>
-                Logout
-            </button>
-        </mat-menu>
-
-    </div> <!-- user-menu -->
+    <ng-template #noProfile>
+        <span >{{anon}}</span>
+    </ng-template>
 
 </div> <!-- header -->

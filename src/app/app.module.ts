@@ -69,7 +69,7 @@ import {StoreEffects} from "./store/effects";
         MatNativeDateModule,
         ToastrModule.forRoot(),
         FormsModule,
-        StoreModule.forRoot({  reducer }, {}),
+        StoreModule.forRoot({userData: reducer}, {}),
         EffectsModule.forRoot(StoreEffects),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
     ],

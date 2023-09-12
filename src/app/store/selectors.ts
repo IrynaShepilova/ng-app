@@ -1,7 +1,7 @@
 import { createSelector } from "@ngrx/store";
-import { IUserDataState } from "../interfaces/userDataState";
+import { AppState, IUserDataState } from "../interfaces/userDataState";
 
-export const selectFeature = ( state: IUserDataState ) => state;
+export const selectFeature = (state: AppState) => state.userData;
 
 export const userAuthSelector = createSelector(
     selectFeature,

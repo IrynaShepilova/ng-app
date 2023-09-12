@@ -3,11 +3,11 @@ import { IUserProfile } from "../../interfaces/profile";
 import { Router} from "@angular/router";
 import { AuthService } from "../../services/auth.service";
 import { ToastrService } from "ngx-toastr";
-import {select, Store} from "@ngrx/store";
+import { Store} from "@ngrx/store";
 import * as actions from "../../store/actions";
-import {map, Observable} from "rxjs";
+import { Observable} from "rxjs";
 import { userProfileSelector } from "../../store/selectors";
-import {IUserDataState} from "../../interfaces/userDataState";
+import { AppState } from "../../interfaces/userDataState";
 
 
 @Component({
@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
         private router: Router,
         private authService: AuthService,
         private toastr: ToastrService,
-        private store: Store<IUserDataState>,
+        private store: Store<AppState>,
     ) {
     }
 

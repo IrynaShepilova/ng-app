@@ -5,3 +5,7 @@ export interface IUserDataState {
     userAuth: IUser;
     userProfile: IUserProfile;
 }
+
+export interface AppState {
+    userData: IUserDataState;
+}
