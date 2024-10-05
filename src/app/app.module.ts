@@ -35,6 +35,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducer } from "./store/reducers";
 import {StoreEffects} from "./store/effects";
+import { MypipePipe } from './mypipe.pipe';
 
 @NgModule({
     declarations: [
@@ -48,7 +49,8 @@ import {StoreEffects} from "./store/effects";
         LoginPageComponent,
         TicTacToeComponent,
         CatchmeComponent,
-        ProfilePageComponent
+        ProfilePageComponent,
+        MypipePipe
     ],
     imports: [
         BrowserModule,

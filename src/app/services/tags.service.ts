@@ -31,7 +31,7 @@ export class TagsService {
     }
 
     public addTag(name: string) {
-        const options = {name: name};
-        return this.http.post(this.url, options);
+        const body = {name};
+        return this.http.post(this.url, body);
     }
 }
