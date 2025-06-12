@@ -4,6 +4,7 @@ import {TagsService} from "../../services/tags.service";
 import {ITag} from "../../interfaces/tag";
 import {FormBuilder, FormGroup, FormControl, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
     selector: 'app-tags-page',
@@ -16,7 +17,9 @@ export class TagsPageComponent implements OnInit {
         private route: ActivatedRoute,
         private tagsService: TagsService,
         private formBuilder: FormBuilder,
-        private toastr: ToastrService) {
+        private toastr: ToastrService,
+        private authService: AuthService,
+        ) {
 
         this.form = this.formBuilder.group({
             name: new FormControl("", Validators.required)
@@ -26,9 +29,11 @@ export class TagsPageComponent implements OnInit {
     public tags: ITag[] = [];
     public form: FormGroup;
     @ViewChild('nameInput') nameInput: ElementRef | undefined;
+    private isAuthenticated: boolean = false;
 
     ngOnInit() {
         this.getTags();
+        this.isAuthenticated = !!this.authService.getToken();
     }
 
     getTags() {
@@ -38,6 +43,10 @@ export class TagsPageComponent implements OnInit {
     }
 
     removeTag(tag: ITag) {
+        if (!this.isAuthenticated) {
+            this.toastr.error('You are not authorized to remove tags', undefined, {closeButton: true, timeOut: 1000})
+            return;
+        }
         this.tagsService.removeTag(tag).subscribe(res => {
             this.toastr.success('Tag removed', undefined, {closeButton: true, timeOut: 1000})
             this.getTags();
@@ -47,6 +56,11 @@ export class TagsPageComponent implements OnInit {
     }
 
     addTag() {
+        if (!this.isAuthenticated) {
+            this.toastr.error('You are not authorized to add tags', undefined, {closeButton: true, timeOut: 1000});
+            this.resetForm();
+            return;
+        }
         this.tagsService.addTag(this.form.value['name']).subscribe(() => {
             this.toastr.success('Tag was successfully added', undefined, {closeButton: true, timeOut: 1000});
 
