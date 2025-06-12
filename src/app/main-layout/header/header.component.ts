@@ -16,7 +16,7 @@ import { AppState } from "../../interfaces/userDataState";
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-    public anon : string =  "Anonymous";
+    public log_in : string =  "Log in";
     profile$: Observable<IUserProfile> = this.store.select(userProfileSelector );
 
     constructor(
@@ -42,6 +42,10 @@ export class HeaderComponent implements OnInit {
     logoutUser() {
         this.authService.clearToken();
         this.toastr.info('You have been logged out', '', { timeOut: 2000 });
+        this.router.navigate(['login'])
+    }
+
+    goToLogin() {
         this.router.navigate(['login'])
     }
 }

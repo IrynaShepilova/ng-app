@@ -2,7 +2,9 @@
     <div class="logo-container" (click)="navigateHome()">
 
     </div><!--   logo-container -->
-    <ng-container *ngIf="(profile$ | async) as profile ; else noProfile">
+
+    <ng-container *ngIf="(profile$ | async) as profile">
+        <ng-container *ngIf="profile.userId != undefined">
         <div class="user-menu">
             <span class="user-menu-button">
                 <button mat-button [matMenuTriggerFor]="menu">
@@ -29,9 +31,13 @@
             </mat-menu>
 
         </div> <!-- user-menu -->
+        </ng-container>
     </ng-container>
-    <ng-template #noProfile>
-        <span >{{anon}}</span>
-    </ng-template>
+
+    <ng-container *ngIf="(profile$ | async)?.userId == undefined">
+        <div  class="not-logged-in" (click)="goToLogin()">
+            <span >{{log_in}}</span>
+        </div>
+    </ng-container>
 
 </div> <!-- header -->

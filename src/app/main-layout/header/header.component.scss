@@ -30,4 +30,13 @@
             color: #333;
         }
     }
+
+    .not-logged-in {
+        display: flex;
+        align-items: center;
+        padding-right: 20px;
+        cursor: pointer;
+        text-decoration: underline;
+        font-weight: bold;
+    }
 }

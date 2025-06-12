@@ -53,6 +53,7 @@ export class TagsPageComponent implements OnInit {
             this.resetForm();
             this.getTags();
         }, err => {
+            console.log('err', err);
             this.toastr.error(`Tag was not added: ${err.message}`)
         })
     }
